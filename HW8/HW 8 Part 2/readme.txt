@@ -1,0 +1,1 @@
+Note that this program does not save to 0000c, instead it outputs to the MIPS display like the grad student demonstrated in lecture today.

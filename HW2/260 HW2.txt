@@ -1,0 +1,105 @@
+Eric Chen
+11381898
+CPTS 260 HW2
+
+1.
+
+# $t0 stores constant 10
+# $t1 stores i
+# $t2 stores int 2
+# $t3 stores result of (i<10)
+# $t4 stores register to store mod
+# $t5 stores k
+----------------------------------------------------------------------------
+.text
+.globl main
+
+main:	
+	li $t0, 10
+	li $t2, 2
+	li $t1, 0
+
+LOOP:	
+	slt $t3, $t1, $t0		# set $t3 to 1 if $t1 < $t0, else 0
+	beq $t3, $zero, EXIT	# EXIT if result of slt is 0
+
+	div $t1, $t2		# $t1 % $t2
+	mfhi $t4			# "Move from HI", mod is stored here
+	addi $t1, $t1, 1		# increment i by 1
+	bne $t4, $zero, ELSE	# if (mod != 0)
+
+	add $t5, $t5, $t5		# k mulitplies itself and stores result 
+				# in itself 
+	addi $t5, $t5, 1 		# add 1 to k
+			
+	ELSE:			# if (mod == 0) is false
+	j LOOP			# loops
+	EXIT:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.
+
+# $t0 stores myString
+# $t1 stores d
+# $t2 stores current char in string
+# $t3 stores len
+# READ ME: the statement len=P-A results in the # of loops 
+# before finding the value so to implement it, I used $t3
+# to store len and it increments with every loop
+----------------------------------------------------------------------------
+
+.text
+.globl main
+
+
+main:
+	la $t0, myString
+	la $t1, d
+LOOP:
+	lbu $t2, ($t0)		# get character at current location
+	beq $t1, $t2, EXIT		# exit loop if letter d
+	beq $zero, $t2, EXIT	# exit loop if null/end of string
+	addi $t0, $t0, 1 		# increment current string location
+	addi $t3, $t3, 1 		# increments len
+	j LOOP
+
+	EXIT:
+
+.data
+	myString: .asciiz "world"
+	d: .asciiz "d"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
