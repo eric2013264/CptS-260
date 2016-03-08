@@ -1,7 +1,0 @@
-read me
-
-I reached out to both TAs for help for more than half a week and neither could offer any help. For this reason I think grading should be more lenient on this assingment.
-
-1. $v0 will always be the solution value. Solve the equation for the sample input to get this expected output.
-
-2. $a0 at the beginning of the file will always be the sample input value. Normally this is set to whatever the HW asks us to use to test it. Some functions will not work without $a0 as some loops are initial value based.
